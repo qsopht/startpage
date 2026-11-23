@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dev Links</title>
+<style>
+  :root {
+    --bg: #121212;
+    --card: #1e1e1e;
+    --accent: #4f8cff;
+    --accent-hover: #6ea0ff;
+    --text: #e8e8e8;
+    --text-dim: #9a9a9a;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  main {
+    width: 100%;
+    max-width: 760px;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  #links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem;
+  }
+
+  @media (max-width: 560px) {
+    #links {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  a.link-btn {
+    display: block;
+    padding: 1rem 1.25rem;
+    background: var(--card);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 500;
+    border-radius: 10px;
+    border: 1px solid #2c2c2c;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  }
+
+  a.link-btn:hover {
+    background: #262626;
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  a.link-btn:active {
+    transform: translateY(0);
+  }
+
+  a.link-btn .label {
+    font-weight: 600;
+    color: var(--accent-hover);
+  }
+</style>
+</head>
+<body>
+<main>
+  <!-- <h1>Dev Links</h1> -->
+  <div id="links"></div>
+</main>
+
+<script>
+  // Add/edit/remove entries here — the page renders from this list.
+  const links = [
+    { label: "Bluechip", url: "https://bluechip.kenan-flagler.unc.edu/" },
+    { label: "Tokenomics", url: "https://kenan-flagler-business-school.github.io/tokenomics/" },
+  ];
+
+  const container = document.getElementById("links");
+  for (const { label, url } of links) {
+    const a = document.createElement("a");
+    a.className = "link-btn";
+    a.href = url;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    a.innerHTML = `<span class="label">${label}</span>`;
+    container.appendChild(a);
+  }
+</script>
+</body>
+</html>
